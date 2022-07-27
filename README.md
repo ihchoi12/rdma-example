@@ -29,23 +29,38 @@ make
  
 ###### server
 ```text
-./bin/rdma_server -a [server_ip_addr]
+./bin/rdma_server -a 10.1.0.6
 ```
 ###### client
 ```text
-atr@atr:~/rdma-example$ ./bin/rdma_client -a [server_ip_addr] -s textstring 
-Passed string is : textstring , with count 10 
-Trying to connect to server at : 127.0.0.1 port: 20886 
-The client is connected successfully 
+inho@nsl-node3:~/ndsmr/rdma-example$ ./bin/rdma_client -a 10.1.0.6 -s textstring
+Passed string is : textstring , with count 10
+Trying to connect to server at : 10.1.0.6 port: 20886
+The client is connected successfully
 ---------------------------------------------------------
-buffer attr, addr: 0x5629832e22c0 , len: 10 , stag : 0x1617b400 
+buffer attr, addr: 0x557bfccd0c90 , len: 10 , stag : 0x4bcdb
 ---------------------------------------------------------
 ...
-SUCCESS, source and destination buffers match 
-Client resource clean up is complete 
-atr@atr:~/rdma-example$ 
+SUCCESS, source and destination buffers match
+Client resource clean up is complete
+inho@nsl-node3:~/ndsmr/rdma-example$
 
 ```
+###### server
+```text
+inho@nsl-node4:~/ndsmr/rdma-example$ ./bin/rdma_server -a 10.1.0.6
+Server is listening successfully at: 10.1.0.6 , port: 20886
+A new connection is accepted from 10.1.0.5
+Client side buffer information is received...
+---------------------------------------------------------
+buffer attr, addr: 0x563c89388330 , len: 10 , stag : 0x54af6
+---------------------------------------------------------
+The client has requested buffer length of : 10 bytes
+A disconnect event is received from the client...
+Server shut-down is complete
+inho@nsl-node4:~/ndsmr/rdma-example$
+```
+
 
 ## Does not have an RDMA device?
 In case you do not have an RDMA device to test the code, you can setup SofitWARP software RDMA device on your Linux machine. Follow instructions here: [https://github.com/animeshtrivedi/blog/blob/master/post/2019-06-26-siw.md](https://github.com/animeshtrivedi/blog/blob/master/post/2019-06-26-siw.md).
