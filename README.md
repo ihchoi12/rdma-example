@@ -29,11 +29,11 @@ make
  
 ###### server
 ```text
-./bin/rdma_server
+./bin/rdma_server -a [server_ip_addr]
 ```
 ###### client
 ```text
-atr@atr:~/rdma-example$ ./bin/rdma_client -a 127.0.0.1 -s textstring 
+atr@atr:~/rdma-example$ ./bin/rdma_client -a [server_ip_addr] -s textstring 
 Passed string is : textstring , with count 10 
 Trying to connect to server at : 127.0.0.1 port: 20886 
 The client is connected successfully 
